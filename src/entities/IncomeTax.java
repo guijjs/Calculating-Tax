@@ -10,10 +10,9 @@ public abstract class IncomeTax{
   public String getName(){
     return this.name;
   };
-  public void calculatingTax(){};
   public Double getIncomeYear(){
     return this.incomeYear;
-  };
+  }
   public abstract Double incomeTax();
 
 }

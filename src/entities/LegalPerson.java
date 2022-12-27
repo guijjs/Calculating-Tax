@@ -1,7 +1,6 @@
 package entities;
 public class LegalPerson extends IncomeTax{
   private Integer numberEmployees;
-  private Double tax;
   public LegalPerson(){
     super();
   };
@@ -10,17 +9,17 @@ public class LegalPerson extends IncomeTax{
     this.numberEmployees = numberEmployees;
   };
   
-  public void calculatingTax(){
-    if(this.numberEmployees > 10){
-      this.tax += incomeYear * (14/100);
-    }else{
-      this.tax += incomeYear * (16/100);
-    }
-  };
+  @Override
   public Double incomeTax(){
-    return this.tax;
-  }
+    Double tax;
+    if(numberEmployees > 10){
+      tax = getIncomeYear() * (14.0/100.0);
+    }else{
+      tax = getIncomeYear() * (16.0/100.0);
+    };
+    return tax;
+  };
   public Integer getNumberEmployees(){
-    return this.numberEmployees;
+    return numberEmployees;
   }
 }

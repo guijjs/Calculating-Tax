@@ -1,7 +1,6 @@
 package entities;
 public class NaturalPerson extends IncomeTax{
   private Double healthExpenses;
-  private Double tax;
   public NaturalPerson(){
     super();
   };
@@ -13,18 +12,17 @@ public class NaturalPerson extends IncomeTax{
     return this.healthExpenses;
   };
 
-  public void calculatingTax(){
-    if(incomeYear <= 20000.00 && healthExpenses > 0){
-      this.tax+= (incomeYear * (15/100) - (healthExpenses * (50/100)));
-    }else if( incomeYear > 20000 && healthExpenses > 0){
-      this.tax+= (incomeYear * (25/100) - (healthExpenses * (50/100)));
-    }else if(incomeYear<=20000 && healthExpenses == 0){
-      this.tax+= (incomeYear * (15/100));
-    }else if(incomeYear>20000 && healthExpenses == 0){
-      this.tax+= (incomeYear * (25/100));
-    };
-  };
   public Double incomeTax(){
-    return this.tax;
-  }
+    Double tax = 0.0;
+    if(getIncomeYear() <= 20000.00 && healthExpenses > 0){
+      tax = (this.getIncomeYear() * (15.0/100.0) - (healthExpenses * (50.0/100.0)));
+    }else if(this.getIncomeYear() > 20000 && healthExpenses > 0){
+      tax = (this.getIncomeYear() * (25.0/100.0) - (healthExpenses * (50.0/100.0)));
+    }else if(this.getIncomeYear()<=20000 && healthExpenses == 0){
+      tax = (this.getIncomeYear() * (15.0/100.0));
+    }else if(this.getIncomeYear()>20000 && healthExpenses == 0){
+      tax = (this.getIncomeYear() * (25.0/100.0));
+    }else{};
+    return tax;
+  };
 }

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Main{
   public static void main(String[] args){
+    Locale.setDefault(Locale.US);
     Scanner sc = new Scanner(System.in);
   
     List<IncomeTax> listaDeTaxas = new ArrayList<>();
@@ -62,16 +63,15 @@ public class Main{
           }
         }
       }
-    }
-    for(IncomeTax taxas : listaDeTaxas){
-      taxas.calculatingTax();
-      System.out.println(taxas.incomeTax());
-    }
+    };
 
     System.out.println("\nTAXAS A SER PAGAS: ");
+    Double totalTax = 0.0;
     for(IncomeTax taxas : listaDeTaxas){
       System.out.printf("%s: R$ %.2f\n", taxas.getName(), taxas.incomeTax());
+      totalTax += taxas.incomeTax();
     };
+    System.out.println("\nTOTAL DE TAXAS A SER PAGAS: " + totalTax);
     sc.close();
   }
 }
